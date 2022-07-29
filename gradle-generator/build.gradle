@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+}
+
+group 'cn.ut'
+version '0.0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    implementation 'com.baomidou:mybatis-plus-generator:3.3.1.tmp'
+    implementation 'org.freemarker:freemarker'
+}
+
+test {
+    useJUnitPlatform()
+}

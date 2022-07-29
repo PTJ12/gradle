@@ -24,7 +24,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.OAS_30).apiInfo(
                 new ApiInfoBuilder()
                         .contact(new Contact("ut", "", "15391493308@163.com"))
-                        .title("swagger3 测试")
+                        .title("swagger3接口文档")
                         .build()
         );
     }
