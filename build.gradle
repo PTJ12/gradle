@@ -53,7 +53,7 @@ allprojects {
         developmentOnly 'org.springframework.boot:spring-boot-devtools'
         //mysql数据库依赖
         runtimeOnly 'mysql:mysql-connector-java'
-        //swagger3
+        implementation 'javax.xml.bind:jaxb-api:2.3.0'
     }
 }
 

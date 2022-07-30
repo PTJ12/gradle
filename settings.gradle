@@ -1,5 +1,5 @@
 rootProject.name = 'gradle'
 include 'gradle-server'
-include 'gradle-admin'
+include 'gradle-system'
 include 'gradle-generator'
 
