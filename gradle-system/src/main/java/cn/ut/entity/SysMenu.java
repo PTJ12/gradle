@@ -1,8 +1,14 @@
 package cn.ut.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.TableField;
+
+import java.awt.*;
 import java.io.Serializable;
+import java.util.List;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -27,6 +33,7 @@ public class SysMenu implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "id")
+    @TableId(type = IdType.AUTO)
     private Long id;
 
     @ApiModelProperty(value = "路由url")
@@ -43,18 +50,21 @@ public class SysMenu implements Serializable {
 
     @ApiModelProperty(value = "是否保持激活")
     @TableField("keep_activity")
-    private Integer keepActivity;
+    private Boolean keep_activity;
 
     @ApiModelProperty(value = "是否需要权限")
-    @TableField("requre_auth")
-    private Integer requreAuth;
+    @TableField("require_auth")
+    private Boolean require_auth;
 
     @ApiModelProperty(value = "父组件id")
     @TableField("parent_id")
-    private Long parentId;
+    private Long parent_id;
 
     @ApiModelProperty(value = "是否启用")
-    private Integer enabled;
+    private Boolean enabled;
 
+    @ApiModelProperty(value = "子菜单")
+    @TableField(exist = false)
+    private List<Menu> children;
 
 }

@@ -54,6 +54,10 @@ allprojects {
         //mysql数据库依赖
         runtimeOnly 'mysql:mysql-connector-java'
         implementation 'javax.xml.bind:jaxb-api:2.3.0'
+        //redis
+        implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+        //common-pool2对象池依赖
+        implementation 'org.apache.commons:commons-pool2'
     }
 }
 

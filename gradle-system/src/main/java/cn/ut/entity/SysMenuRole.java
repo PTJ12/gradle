@@ -1,5 +1,7 @@
 package cn.ut.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
@@ -27,6 +29,7 @@ public class SysMenuRole implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "id")
+    @TableId(type = IdType.AUTO)
     private Long id;
 
     @ApiModelProperty(value = "角色id")

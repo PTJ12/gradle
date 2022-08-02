@@ -44,4 +44,10 @@ public class LoginController {
         sysAdmin.setPassword(null);
         return RestBean.success("操作成功", sysAdmin);
     }
+
+    @GetMapping("/system/logout")
+    @ApiOperation(value = "退出登录")
+    public RestBean logout(){
+        return RestBean.success("退出成功");
+    }
 }

@@ -81,19 +81,9 @@ public class SecurityConfig{
                 .exceptionHandling().authenticationEntryPoint(restAuthorizationEntryPoint).accessDeniedHandler(restfulAccessDeniedHandler).and()
                 .authorizeRequests(authorize -> authorize
                         //请求放开
-//                        .antMatchers("/login").permitAll()
-//                        .antMatchers("/logout").permitAll()
-//                        .antMatchers("/doc.html").permitAll()
-//                        .antMatchers("/index.html").permitAll()
-//                        .antMatchers("/css/**").permitAll()
-//                        .antMatchers("/js/**").permitAll()
-//                        .antMatchers("/favicon.ico").permitAll()
-//                        .antMatchers("/webjars/**").permitAll()
-//                        .antMatchers("/swagger-resources/**").permitAll()
-//                        .antMatchers("/v3/api-docs/**").permitAll()
-//                        .antMatchers("/**").permitAll()
-//                        .antMatchers("/**").permitAll()
                         .antMatchers("/login",
+                                "/system/admin/insert",
+                                "/system/logout",
                                 "/doc.html",
                                 "/index.html",
                                 "/css/**",

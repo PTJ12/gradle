@@ -25,7 +25,7 @@ import java.util.Map;
  * @date 2022/7/25 23:04
  */
 @Service
-public class ISysAdminServiceImpl extends ServiceImpl<SysAdminMapper, SysAdmin> implements ISysAdminService {
+public class SysAdminServiceImpl extends ServiceImpl<SysAdminMapper, SysAdmin> implements ISysAdminService {
 
     @Autowired
     private UserDetailsService userDetailsService;

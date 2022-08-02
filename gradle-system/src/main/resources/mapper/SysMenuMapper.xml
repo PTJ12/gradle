@@ -9,15 +9,55 @@
         <result column="path" property="path" />
         <result column="component" property="component" />
         <result column="name" property="name" />
-        <result column="keep_activity" property="keepActivity" />
-        <result column="requre_auth" property="requreAuth" />
-        <result column="parent_id" property="parentId" />
+        <result column="keep_activity" property="keep_activity" />
+        <result column="require_auth" property="require_auth" />
+        <result column="parent_id" property="parent_id" />
         <result column="enabled" property="enabled" />
     </resultMap>
 
+    <resultMap id="Menus" type="cn.ut.entity.SysMenu" extends="BaseResultMap">
+        <collection property="children" ofType="cn.ut.entity.SysMenu">
+            <id column="id2" property="id" />
+            <result column="url2" property="url" />
+            <result column="path2" property="path" />
+            <result column="component2" property="component" />
+            <result column="name2" property="name" />
+            <result column="keep_activity2" property="keep_activity" />
+            <result column="require_auth2" property="require_auth" />
+            <result column="parent_id2" property="parent_id" />
+            <result column="enabled2" property="enabled" />
+        </collection>
+    </resultMap>
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         id, url, path, component, name, keep_activity, requre_auth, parent_id, enabled
     </sql>
+    <select id="getMenuByAdminId" resultMap="Menus">
+        SELECT
+            m1.*,
+            m2.id AS id2,
+            m2.url AS url2,
+            m2.path AS path2,
+            m2.component AS component2,
+            m2.`name` AS name2,
+            m2.keep_activity AS keep_activity2,
+            m2.require_auth AS requre_auth2,
+            m2.parent_id AS parent_id2,
+            m2.enabled AS enabled2
+        FROM
+            sys_menu m1,
+            sys_menu m2,
+            sys_admin_role ar,
+            sys_menu_role mr
+        WHERE
+            m1.id = m2.parent_id
+          AND
+            m2.id = mr.m_id
+          AND
+            mr.r_id = ar.r_id
+          AND
+            ar.a_id = #{id}
+          AND m2.enabled = TRUE
+    </select>
 
 </mapper>

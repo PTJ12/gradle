@@ -1,8 +1,6 @@
 package cn.ut.entity;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -14,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.Date;
 
 /**
  * <p>
@@ -33,6 +32,7 @@ public class SysAdmin implements Serializable , UserDetails {
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "id")
+    @TableId(type = IdType.AUTO)
     private Long id;
 
     @ApiModelProperty(value = "用户名")
@@ -48,12 +48,12 @@ public class SysAdmin implements Serializable , UserDetails {
     private Boolean enable;
 
     @ApiModelProperty(value = "创建时间")
-    @TableField(value = "create_time", fill = FieldFill.INSERT)
-    private LocalDateTime createTime;
+    @TableField(fill = FieldFill.INSERT)
+    private Date create_time;
 
     @ApiModelProperty(value = "更新时间")
-    @TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE)
-    private LocalDateTime updateTime;
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private Date update_time;
 
 
     @Override

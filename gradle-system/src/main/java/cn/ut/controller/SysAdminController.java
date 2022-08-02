@@ -4,6 +4,7 @@ import cn.ut.entity.SysAdmin;
 import cn.ut.service.ISysAdminService;
 import cn.ut.util.JwtTokenUtil;
 import cn.ut.util.RestBean;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -16,6 +17,8 @@ import java.util.List;
  * @date 2022/7/25 23:06
  */
 @RestController
+@Api(tags = "SysAdmin")
+@RequestMapping("system/admin")
 public class SysAdminController {
 
     @Autowired
@@ -24,17 +27,11 @@ public class SysAdminController {
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
 
-    @GetMapping("getAdminAll")
-    public List<SysAdmin> getSysAdminAll() {
-        List<SysAdmin> list = sysAdminService.list();
-
-        return list;
-    }
-
-    @PostMapping("getAdminAll")
+    @PostMapping("/insert")
     @ApiOperation("添加用户")
     public RestBean insertSysAdmin(@RequestBody SysAdmin sysAdmin) {
         sysAdmin.setPassword(new BCryptPasswordEncoder().encode(sysAdmin.getPassword()));
+        sysAdmin.setEnable(true);
         boolean save = sysAdminService.save(sysAdmin);
         if (save){
             return RestBean.success("添加成功");
