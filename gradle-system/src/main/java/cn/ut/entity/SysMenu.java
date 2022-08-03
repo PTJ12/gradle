@@ -15,6 +15,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
+import javax.management.relation.Role;
+
 /**
  * <p>
  * 菜单表
@@ -67,4 +69,7 @@ public class SysMenu implements Serializable {
     @TableField(exist = false)
     private List<Menu> children;
 
+    @ApiModelProperty(value = "角色列表")
+    @TableField(exist = false)
+    private List<SysRole> roles;
 }

@@ -6,12 +6,24 @@
     <resultMap id="BaseResultMap" type="cn.ut.entity.SysRole">
         <id column="id" property="id" />
         <result column="name" property="name" />
-        <result column="name_ch" property="nameCh" />
+        <result column="name_ch" property="name_ch" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         id, name, name_ch
     </sql>
+    <!--  根据用户id查询角色列表  -->
+    <select id="getRoles" resultType="cn.ut.entity.SysRole">
+        SELECT
+            r.id,
+            r.`name`,
+            r.name_ch
+        FROM
+            sys_role AS r
+                LEFT JOIN sys_admin_role AS ar ON r.id = ar.r_id
+        WHERE
+            ar.a_id = #{id}
+    </select>
 
 </mapper>

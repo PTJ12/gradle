@@ -21,5 +21,11 @@ public interface ISysMenuService extends IService<SysMenu> {
      * 根据用户id获取菜单列表
      * @return
      */
-    List<Menu> getMenusByAdminId();
+    List<SysMenu> getMenusByAdminId();
+
+    /**
+     * 根据角色获取菜单列表
+     * @return
+     */
+    List<SysMenu> getMenusWithRole();
 }

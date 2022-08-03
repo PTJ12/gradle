@@ -1,7 +1,9 @@
 package cn.ut.service.impl;
 
 import cn.ut.entity.SysAdmin;
+import cn.ut.entity.SysRole;
 import cn.ut.mapper.SysAdminMapper;
+import cn.ut.mapper.SysRoleMapper;
 import cn.ut.service.ISysAdminService;
 import cn.ut.util.JwtTokenUtil;
 import cn.ut.util.RestBean;
@@ -18,6 +20,7 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -38,6 +41,10 @@ public class SysAdminServiceImpl extends ServiceImpl<SysAdminMapper, SysAdmin> i
 
     @Value("${jwt.tokenHead}")
     private String tokenHead;
+
+    @Autowired
+    private SysRoleMapper sysRoleMapper;
+
     /**
      * 登录之后返回token
      * @param username
@@ -77,4 +84,16 @@ public class SysAdminServiceImpl extends ServiceImpl<SysAdminMapper, SysAdmin> i
                 .eq("username", username)
                 .eq("enable", true));
     }
+
+    /**
+     * 根据用户id查询角色列表
+     * @param adminId
+     * @return
+     */
+    @Override
+    public List<SysRole> getRoles(Long adminId) {
+        return sysRoleMapper.getRoles(adminId);
+    }
+
+
 }

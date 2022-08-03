@@ -1,6 +1,7 @@
 package cn.ut.controller;
 
 
+import cn.ut.entity.SysMenu;
 import cn.ut.service.ISysMenuService;
 import cn.ut.util.RestBean;
 import io.swagger.annotations.ApiOperation;
@@ -30,7 +31,7 @@ public class SysMenuController {
     @ApiOperation(value = "通过用户id查询菜单列表")
     @GetMapping("/menu")
     public RestBean getMenusByAdminId(){
-        List<Menu> menus = sysMenuService.getMenusByAdminId();
+        List<SysMenu> menus = sysMenuService.getMenusByAdminId();
         return RestBean.success("操作成功", menus);
     }
 }

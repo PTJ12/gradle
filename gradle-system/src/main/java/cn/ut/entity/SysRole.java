@@ -11,6 +11,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
+import javax.management.relation.Role;
+
 /**
  * <p>
  * 角色表
@@ -37,7 +39,30 @@ public class SysRole implements Serializable {
 
     @ApiModelProperty(value = "角色中文名称")
     @TableField("name_ch")
-    private String nameCh;
+    private String name_ch;
 
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName_ch() {
+        return name_ch;
+    }
+
+    public void setName_ch(String name_ch) {
+        this.name_ch = name_ch;
+    }
 }

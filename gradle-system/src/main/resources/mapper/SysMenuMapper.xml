@@ -28,11 +28,19 @@
             <result column="enabled2" property="enabled" />
         </collection>
     </resultMap>
+
+    <resultMap id="MenusWithRole" type="cn.ut.entity.SysMenu" extends="BaseResultMap">
+        <collection property="roles" ofType="cn.ut.entity.SysRole">
+            <id column="rid" property="id"/>
+            <result column="rname" property="name"/>
+            <result column="rnameCH" property="name_ch"/>
+        </collection>
+    </resultMap>
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         id, url, path, component, name, keep_activity, requre_auth, parent_id, enabled
     </sql>
-    <select id="getMenuByAdminId" resultMap="Menus">
+    <select id="getMenusByAdminId" resultMap="Menus">
         SELECT
             m1.*,
             m2.id AS id2,
@@ -41,7 +49,7 @@
             m2.component AS component2,
             m2.`name` AS name2,
             m2.keep_activity AS keep_activity2,
-            m2.require_auth AS requre_auth2,
+            m2.require_auth AS require_auth2,
             m2.parent_id AS parent_id2,
             m2.enabled AS enabled2
         FROM
@@ -51,13 +59,28 @@
             sys_menu_role mr
         WHERE
             m1.id = m2.parent_id
-          AND
-            m2.id = mr.m_id
-          AND
-            mr.r_id = ar.r_id
-          AND
-            ar.a_id = #{id}
+          AND m2.id = mr.m_id
+          AND mr.r_id = ar.r_id
+          AND ar.a_id = #{id}
           AND m2.enabled = TRUE
+        ORDER BY m1.id
+    </select>
+
+    <select id="getMenusWithRole" resultMap="MenusWithRole">
+        SELECT
+            m.*,
+            r.id AS rid,
+            r.`name` AS rname,
+            r.name_ch AS rnameCH
+        FROM
+            sys_menu m,
+            sys_menu_role mr,
+            sys_role r
+        WHERE
+            m.id = mr.m_id
+          AND r.id = mr.r_id
+        ORDER BY
+            m.id
     </select>
 
 </mapper>

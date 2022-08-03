@@ -42,6 +42,7 @@ public class LoginController {
         String username = principal.getName();
         SysAdmin sysAdmin = sysAdminService.getAdminByUsername(username);
         sysAdmin.setPassword(null);
+        sysAdmin.setRoles(sysAdminService.getRoles(sysAdmin.getId()));
         return RestBean.success("操作成功", sysAdmin);
     }
 

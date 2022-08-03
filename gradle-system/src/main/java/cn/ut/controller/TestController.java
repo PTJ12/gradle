@@ -1,23 +1,28 @@
 package cn.ut.controller;
 
-import cn.ut.service.TestService;
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
-
 /**
  * @author PuTongjiao
- * @date 2022/7/25 22:37
+ * @date 2022/8/3 18:41
  */
 @RestController
+@Api(tags = "测试")
 public class TestController {
 
-    @Resource
-    private TestService testService;
+    @GetMapping("/system/menu/test")
+    public String test1(){
+        return "/system/menu/test";
+    }
 
-    @GetMapping("/test")
-    public String test() {
-        return testService.test();
+    @GetMapping("/system/user/test")
+    public String test2(){
+        return "/system/user/test";
+    }
+    @GetMapping("/system/cfg/test")
+    public String test3(){
+        return "/system/cfg/test";
     }
 }

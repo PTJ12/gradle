@@ -11,9 +11,25 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
+# 循环依赖注入
+#  main:
+#    allow-circular-references: true
+  redis:
+    timeout: 10000
+    host: 127.0.0.1
+    port: 6379
+    database: 1
+    lettuce:
+      pool:
+        # 最大连接数
+        max-active: 1024
+        # 最大连接阻塞等待时间
+        max-wait: 10000ms
+        # 最大空闲连接
+        max-idle: 200
+        # 最小空闲连接
+        min-idle: 5
 
-  main:
-    allow-circular-references: true
 # Mybatis-plus配置
 mybatis-plus:
 #  #配置Mapper映射文件
