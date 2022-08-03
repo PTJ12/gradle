@@ -12,6 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 @Api(tags = "测试")
 public class TestController {
 
+    @GetMapping("/test")
+    public String test(){
+        return "test";
+    }
+
     @GetMapping("/system/menu/test")
     public String test1(){
         return "/system/menu/test";
