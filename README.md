@@ -1,6 +1,8 @@
 ### 后台权限管理系统
 [![OSCS Status](https://www.oscs1024.com/platform/badge/pj153/gradle.git.svg?size=small)](https://www.murphysec.com/dr/vmHwnkMaZe86ipS2r3)
 
+接口文档访问地址：[gradle](http://81.68.234.21:8080/doc.html)
+
 基于SpringBoot，Spring Security，JWT的前后端分离的权限管理系统后端
 通过修改数据库可方便的进行登录用户的权限控制 内置mybatis-plus逆向工程
 
