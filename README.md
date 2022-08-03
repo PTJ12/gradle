@@ -2,6 +2,8 @@
 基于SpringBoot，Spring Security，JWT的前后端分离的权限管理系统后端
 通过修改数据库可方便的进行登录用户的权限控制 内置mybatis-plus逆向工程
 
+**前台对android进行适配，正在搭建过程...** 
+
 #### 版本管理
 + 数据库：mysql:8.0.28
 + 后端项目构建工具：gradle:7.5
