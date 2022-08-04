@@ -1,6 +1,7 @@
 package cn.ut.controller;
 
 import cn.ut.util.RestBean;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -20,5 +21,10 @@ public class GlobalException {
             return RestBean.error("该数据有关联数据，操作失败");
         }
         return RestBean.error("数据库异常，操作失败");
+    }
+
+    @ExceptionHandler(UsernameNotFoundException.class)
+    public RestBean usernameException(UsernameNotFoundException e){
+        return RestBean.error("用户名或密码不正确");
     }
 }
