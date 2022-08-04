@@ -41,6 +41,9 @@ public class SysAdmin implements Serializable , UserDetails {
     @ApiModelProperty(value = "用户名")
     private String username;
 
+    @ApiModelProperty(value = "昵称")
+    private String nickname;
+
     @ApiModelProperty(value = "电话号码")
     private Long phone;
 

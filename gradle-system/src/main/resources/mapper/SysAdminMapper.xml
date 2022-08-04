@@ -6,6 +6,7 @@
     <resultMap id="BaseResultMap" type="cn.ut.entity.SysAdmin">
         <id column="id" property="id" />
         <result column="username" property="username" />
+        <result column="nickname" property="nickname" />
         <result column="phone" property="phone" />
         <result column="password" property="password" />
         <result column="enable" property="enable" />
@@ -15,7 +16,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, username, phone, password, enable, create_time, update_time
+        id, username, nickname, phone, password, enable, create_time, update_time
     </sql>
 
 </mapper>
